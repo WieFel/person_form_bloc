@@ -19,15 +19,17 @@ class PersonFormCubit extends Cubit<PersonFormState> {
 
   void onAgeChanged(int? age) {
     final ageInput = Age.dirty(age);
+    final roleInput = state.role.copyWith(age: ageInput.value);
 
     emit(state.copyWith(
       age: ageInput,
-      isValid: Formz.validate([state.name, ageInput, state.role]),
+      role: roleInput,
+      isValid: Formz.validate([state.name, ageInput, roleInput]),
     ));
   }
 
   void onRoleChanged(RoleView? role) {
-    final roleInput = Role.dirty(value: role);
+    final roleInput = Role.dirty(value: role, age: state.age.value);
 
     emit(state.copyWith(
       role: roleInput,

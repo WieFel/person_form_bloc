@@ -13,7 +13,7 @@ class RoleDropdownButton extends StatelessWidget {
       builder: (context, state) {
         final roleViews = RoleType.values.map((e) => RoleView(e)).toList();
 
-        return DropdownButton<RoleView>(
+        return DropdownButtonFormField<RoleView>(
           hint: const Text('Role'),
           isExpanded: true,
           items: roleViews
@@ -21,6 +21,9 @@ class RoleDropdownButton extends StatelessWidget {
               .toList(),
           value: state.role.value,
           onChanged: (value) => context.read<PersonFormCubit>().onRoleChanged(value),
+          decoration: InputDecoration(
+            errorText: state.role.displayError?.text,
+          ),
         );
       },
     );

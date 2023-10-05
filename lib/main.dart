@@ -35,10 +35,26 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Person Form'),
       ),
-      body: BlocProvider<PersonFormCubit>(
-        create: (context) => PersonFormCubit(const PersonFormState()),
-        child: PersonForm(
-          onChanged: (_) {},
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  BlocProvider<PersonFormCubit>(
+                    create: (context) => PersonFormCubit(const PersonFormState()),
+                    child: PersonForm(
+                      onChanged: (_) {},
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Save'),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
