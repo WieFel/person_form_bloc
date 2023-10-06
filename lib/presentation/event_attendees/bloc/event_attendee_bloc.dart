@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-
-import '../../person_form/person_form.dart';
+import 'package:formz/formz.dart';
+import 'package:person_form_bloc/presentation/person_form/models/person_input.dart';
 
 part 'event_attendee_event.dart';
 
@@ -19,11 +19,11 @@ class EventAttendeeBloc extends Bloc<EventAttendeeEvent, EventAttendeeState> {
     EventAttendeeAdded event,
     Emitter<EventAttendeeState> emit,
   ) async {
-    var newAttendees = List.of(state.attendees)..add(const PersonFormState());
+    var newAttendees = List.of(state.attendees)..add(const PersonInput.pure());
 
     emit(EventAttendeeFilled(
       newAttendees,
-      isValid: newAttendees.every((attendee) => attendee.isValid),
+      isValid: Formz.validate(newAttendees),
     ));
   }
 
@@ -36,7 +36,7 @@ class EventAttendeeBloc extends Bloc<EventAttendeeEvent, EventAttendeeState> {
 
     emit(EventAttendeeFilled(
       newAttendees,
-      isValid: newAttendees.every((attendee) => attendee.isValid),
+      isValid: Formz.validate(newAttendees),
     ));
   }
 
@@ -48,7 +48,7 @@ class EventAttendeeBloc extends Bloc<EventAttendeeEvent, EventAttendeeState> {
 
     emit(EventAttendeeFilled(
       newAttendees,
-      isValid: newAttendees.every((attendee) => attendee.isValid),
+      isValid: Formz.validate(newAttendees),
     ));
   }
 }

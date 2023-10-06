@@ -1,7 +1,7 @@
 part of 'event_attendee_bloc.dart';
 
 abstract class EventAttendeeState {
-  final List<PersonFormState> attendees;
+  final List<PersonInput> attendees;
   final bool isValid;
 
   const EventAttendeeState(this.attendees, {this.isValid = false});
@@ -13,7 +13,7 @@ class EventAttendeeInitial extends EventAttendeeState {
 
 class EventAttendeeFilled extends EventAttendeeState {
   const EventAttendeeFilled(
-    List<PersonFormState> attendees, {
+    List<PersonInput> attendees, {
     bool isValid = false,
   }) : super(attendees, isValid: isValid);
 }

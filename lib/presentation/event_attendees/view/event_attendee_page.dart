@@ -22,18 +22,16 @@ class EventAttendeePage extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     itemCount: state.attendees.length,
-                    itemBuilder: (context, index) => BlocProvider<PersonFormCubit>(
-                      create: (context) => PersonFormCubit(state.attendees[index]),
-                      child: PersonForm(
-                        onChanged: (newAttendee) {
-                          context
-                              .read<EventAttendeeBloc>()
-                              .add(EventAttendeeChanged(index, newAttendee));
-                        },
-                        onDelete: () {
-                          context.read<EventAttendeeBloc>().add(EventAttendeeDeleted(index));
-                        },
-                      ),
+                    itemBuilder: (context, index) => PersonForm(
+                      person: state.attendees[index],
+                      onChanged: (newAttendee) {
+                        context
+                            .read<EventAttendeeBloc>()
+                            .add(EventAttendeeChanged(index, newAttendee));
+                      },
+                      onDelete: () {
+                        context.read<EventAttendeeBloc>().add(EventAttendeeDeleted(index));
+                      },
                     ),
                   ),
                 ),

@@ -1,18 +1,18 @@
 import 'package:formz/formz.dart';
 
-import 'role_view.dart';
+import 'role_type.dart';
 
 enum RoleValidationError { empty, notAllowedChild, notAllowedAdult, notAllowedSenior }
 
-class Role extends FormzInput<RoleView?, RoleValidationError> {
+class Role extends FormzInput<RoleType?, RoleValidationError> {
   final int? age;
 
-  const Role.pure({RoleView? value, this.age}) : super.pure(value);
+  const Role.pure({RoleType? value, this.age}) : super.pure(value);
 
-  const Role.dirty({RoleView? value, this.age}) : super.dirty(value);
+  const Role.dirty({RoleType? value, this.age}) : super.dirty(value);
 
   Role copyWith({
-    RoleView? value,
+    RoleType? value,
     int? age,
   }) {
     return isPure
@@ -21,22 +21,22 @@ class Role extends FormzInput<RoleView?, RoleValidationError> {
   }
 
   @override
-  RoleValidationError? validator(RoleView? value) {
+  RoleValidationError? validator(RoleType? value) {
     if (value == null) {
       return RoleValidationError.empty;
     }
 
     if (age == null) return null;
 
-    if (age! >= 18 && value.role == RoleType.child) {
+    if (age! >= 18 && value == RoleType.child) {
       return RoleValidationError.notAllowedChild;
     }
 
-    if ((age! < 18 || age! >= 60) && value.role == RoleType.adult) {
+    if ((age! < 18 || age! >= 60) && value == RoleType.adult) {
       return RoleValidationError.notAllowedAdult;
     }
 
-    if (age! < 60 && value.role == RoleType.senior) {
+    if (age! < 60 && value == RoleType.senior) {
       return RoleValidationError.notAllowedSenior;
     }
 

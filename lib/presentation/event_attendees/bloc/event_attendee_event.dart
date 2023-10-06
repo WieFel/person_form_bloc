@@ -10,7 +10,7 @@ class EventAttendeeAdded extends EventAttendeeEvent {
 
 class EventAttendeeChanged extends EventAttendeeEvent {
   final int index;
-  final PersonFormState attendee;
+  final PersonInput attendee;
 
   const EventAttendeeChanged(this.index, this.attendee);
 }
