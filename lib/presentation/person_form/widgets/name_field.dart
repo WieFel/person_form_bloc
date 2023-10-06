@@ -14,8 +14,8 @@ class NameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      initialValue: name.value,
+    return TextField(
+      controller: TextEditingController(text: name.value),
       onChanged: (value) => onChanged(Name.dirty(value)),
       textAlign: TextAlign.left,
       decoration: InputDecoration(

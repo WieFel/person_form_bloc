@@ -14,8 +14,8 @@ class AgeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      initialValue: age.value?.toString() ?? '',
+    return TextField(
+      controller: TextEditingController(text: age.value?.toString() ?? ''),
       keyboardType: TextInputType.number,
       onChanged: (value) => onChanged(Age.dirty(num.tryParse(value)?.toInt())),
       textAlign: TextAlign.left,
