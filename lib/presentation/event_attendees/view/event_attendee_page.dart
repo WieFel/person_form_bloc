@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'event_attendees/event_attendees.dart';
-import 'person_form/person_form.dart';
+import '../../person_form/person_form.dart';
+import '../bloc/event_attendee_bloc.dart';
 
 class EventAttendeePage extends StatelessWidget {
   const EventAttendeePage({super.key});

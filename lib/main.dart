@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:person_form_bloc/event_attendee_page.dart';
 
-import 'event_attendees/bloc/event_attendee_bloc.dart';
+import 'presentation/event_attendees/event_attendees.dart';
 import 'simple_bloc_observer.dart';
 
 void main() {
