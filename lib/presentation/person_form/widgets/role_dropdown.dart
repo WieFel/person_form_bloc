@@ -21,7 +21,7 @@ class RoleDropdownButton extends StatelessWidget {
           .map((e) => DropdownMenuItem<RoleType>(value: e, child: Text(e.name)))
           .toList(),
       value: role.value,
-      onChanged: (value) => onChanged(role.copyWith(value: value)),
+      onChanged: (value) => onChanged(Role.dirty(value: value, age: role.age)),
       decoration: InputDecoration(
         errorText: role.displayError?.text,
       ),
